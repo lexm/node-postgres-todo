@@ -51,7 +51,7 @@ router.get('/api/v1/todos', (req, res, next) => {
 });
 
 router.put('/api/v1/todos/:todo_id', (req, res, next) => {
-  const var = [];
+  var results = [];
   const id = req.params.todo_id;
   const data = {text: req.body.text, complete: req.body.complete};
   pg.connect(connectionString, (err, client, done) => {
@@ -72,7 +72,24 @@ router.put('/api/v1/todos/:todo_id', (req, res, next) => {
 
 router.delete('/api/v1/todos:todo_id', (req, res, next) => {
   var results = [];
-})
+  const id = req.params.todo_id;
+  pg.connect(connectionString, (err, client, done) => {
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data:err});
+    }
+    client.query('DELETE FROM items WHERE id=($1)', [id]);
+    var query = client.query('SELECT * FROM items ORDER BY id ASC');
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
+  });
+});
 
 
 
