@@ -90,6 +90,6 @@ router.delete('/api/v1/todos/:todo_id', (req, res, next) => {
       return res.json(results);
     });
   });
-// });
+});
 
 module.exports = router;
