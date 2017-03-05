@@ -21,7 +21,7 @@ angular.module('nodeTodo', [])
       console.log('Error: ' + error);
     });
   };
-  $scope.deleteTodo = (totoID) => {
+  $scope.deleteTodo = (todoID) => {
     $http.delete('/api/v1/todos' + todoID)
     .success((data) => {
       $scope.todoData = data;
