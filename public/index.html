@@ -9,7 +9,7 @@
 <body ng-controller="mainController">
   <div class="container">
     <ul ng-repeat="todo in todoData">
-      <li><input type="checkbox" ng-click="deleteTodo(todo.id)">$nbsp;{{ todo.text }}</li>
+      <li><input type="checkbox" ng-click="deleteTodo(todo.id)">&nbsp;{{ todo.text }}</li>
     </ul>
   </div>
   <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
