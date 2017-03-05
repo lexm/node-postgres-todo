@@ -6,7 +6,8 @@ const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.sendFile('index.html');
+  // res.render('index', { title: 'Express' });
 });
 
 router.post('/api/v1/todos', (req, res, next) => {
@@ -89,6 +90,6 @@ router.delete('/api/v1/todos/:todo_id', (req, res, next) => {
       return res.json(results);
     });
   });
-});
+// });
 
 module.exports = router;
