@@ -70,7 +70,7 @@ router.put('/api/v1/todos/:todo_id', (req, res, next) => {
   });
 });
 
-router.delete('/api/v1/todos:todo_id', (req, res, next) => {
+router.delete('/api/v1/todos/:todo_id', (req, res, next) => {
   var results = [];
   const id = req.params.todo_id;
   pg.connect(connectionString, (err, client, done) => {
@@ -90,19 +90,5 @@ router.delete('/api/v1/todos:todo_id', (req, res, next) => {
     });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
