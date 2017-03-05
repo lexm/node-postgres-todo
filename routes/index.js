@@ -50,6 +50,29 @@ router.get('/api/v1/todos', (req, res, next) => {
   });
 });
 
+router.put('/api/v1/todos/:todo_id', (req, res, next) => {
+  const results = [];
+  const id = req.params.todo_id;
+  const data = {text: req.body.text, complete: req.body.complete};
+  pg.connect(connectionString, (err, client, done) => {
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    client.query('UPDATE items SET test=($1), complete=($2) WHERE id=($3)',
+    [data.test, data.complete, id]);
+    const query = client.query('SELECT * FROM items ORDER BY id ASC');
+    query.on('end', function() {
+      done();
+      return res.json(results);
+    });
+  });
+});
+
+
+
+
 
 
 
