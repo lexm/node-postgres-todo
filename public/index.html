@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nodeTodo">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo app - w/ Node, Express, Angular, and PostgreSQL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", media="screen">
+</head>
+<body ng-controller="mainController">
+  <div class="container">
+    <ul ng-repeat="toto in todoData">
+      <li>{{ todo.text }}</li>
+    </ul>
+  </div>
+  <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
+  <script src="javascripts/app.js"></script>
+</body>
+</html>
