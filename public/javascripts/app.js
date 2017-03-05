@@ -22,7 +22,7 @@ angular.module('nodeTodo', [])
     });
   };
   $scope.deleteTodo = (todoID) => {
-    $http.delete('/api/v1/todos' + todoID)
+    $http.delete('/api/v1/todos/' + todoID)
     .success((data) => {
       $scope.todoData = data;
       console.log(data);
